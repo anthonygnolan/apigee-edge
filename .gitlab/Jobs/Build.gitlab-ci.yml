@@ -1,0 +1,17 @@
+build:
+  image: alpine
+  stage: build
+  before_script:
+    - apk update && apk add zip
+  script:
+    - ls
+    - echo $CI_PROJECT_DIR
+    - cd $CI_PROJECT_DIR
+    - zip -r apiproxy.zip apiproxy/*
+    - ls
+  artifacts:
+    paths:
+      - apiproxy.zip
+  except:
+    refs:
+      - tags

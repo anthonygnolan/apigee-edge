@@ -1,0 +1,36 @@
+{
+  "name": "mock_v2",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^27.5.1",
+    "jest-junit": "^13.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./apiproxy/resources/jsc/*"
+    ],
+    "coverageReporters": [
+      "cobertura",
+      "text-summary",
+      [
+        "lcov",
+        {
+          "projectRoot": "./"
+        }
+      ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 60
+      }
+    },
+    "reporters": [
+      "default",
+      ["jest-junit", {"outputName": "junit.xml"}]
+    ]
+  }
+}

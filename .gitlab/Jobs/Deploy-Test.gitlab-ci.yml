@@ -1,0 +1,22 @@
+deploy_test:
+  stage: deploy_test
+  needs:
+    - job: deploy
+      artifacts: true
+  script:
+    - |
+      REVISIONS=$(curl -X 'GET' ${APIGEE_URL}${APIGEE_ORG}'/apis/'${CI_PROJECT_NAME}'/revisions' \
+        -H 'Authorization: Basic '${APIGEE_TOKEN} )
+    - echo ${REVISIONS} | jq .[-1]
+    - REVISION=$( echo ${REVISIONS} | jq --raw-output .[-1])
+    - |
+      RESPONSE=$(curl -X 'POST' ${APIGEE_URL}${APIGEE_ORG}'/environments/'${CI_ENVIRONMENT_NAME}'/apis/'${CI_PROJECT_NAME}'/revisions/'${REVISION}'/deployments?override=true' \
+        -H 'Authorization: Basic '${APIGEE_TOKEN} \
+        -H 'Content-Type: application/x-www-form-urlencoded')
+    - echo ${RESPONSE} 
+  environment:
+    name: test
+    url: https://staging.example.com
+  only:
+    refs:
+      - main

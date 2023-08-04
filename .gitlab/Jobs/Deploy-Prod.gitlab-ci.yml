@@ -1,0 +1,9 @@
+deploy_prod:
+  stage: deploy
+  dependencies:
+    - deploy
+  script:
+    - echo "Deploy to staging server"
+  environment:
+    name: prod
+    url: https://staging.example.com

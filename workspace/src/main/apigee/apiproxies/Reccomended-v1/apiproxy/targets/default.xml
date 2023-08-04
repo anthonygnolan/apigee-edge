@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+	<PreFlow/>
+	<Flows/>
+	<PostFlow/>
+	<HTTPTargetConnection>
+		<LoadBalancer>
+			<Server name="MockServer-v1"/>
+		</LoadBalancer>
+	</HTTPTargetConnection>
+	<FaultRules/>
+	<DefaultFaultRule/>
+</TargetEndpoint>

@@ -1,0 +1,15 @@
+stages:
+  - build
+  - test
+  - validate
+  - inspect_code
+  - deploy
+  - deploy_test
+
+include:
+  - local: '/Jobs/Build.gitlab-ci.yml'
+  - local: '/Jobs/Unit-Tests.gitlab-ci.yml'
+  - local: '/Jobs/Validate.gitlab-ci.yml'
+  - local: '/Jobs/Deploy.gitlab-ci.yml'
+  - local: '/Jobs/Deploy-Test.gitlab-ci.yml'
+  - local: '/Jobs/Deploy-Prod.gitlab-ci.yml'

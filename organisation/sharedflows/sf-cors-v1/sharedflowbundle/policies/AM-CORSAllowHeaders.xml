@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-CORSAllowHeaders">
+	<DisplayName>AM-CORSAllowHeaders</DisplayName>
+	<FaultRules/>
+	<Properties/>
+	<Add>
+		<Headers>
+			<Header name="Access-Control-Allow-Headers">*</Header>
+		</Headers>
+	</Add>
+	<IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

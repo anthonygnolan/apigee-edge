@@ -1,0 +1,27 @@
+deploy:
+  image: alpine
+  stage: deploy
+  dependencies:
+    - validate
+  before_script:
+    - apk update && apk add curl && apk add jq
+  script:
+    - |
+      RESPONSE=$(curl -X 'POST' ${APIGEE_URL}${APIGEE_ORG}'/apis?name='${CI_PROJECT_NAME}'&action=import&validate=true' \
+        -H 'Authorization: Basic '${APIGEE_TOKEN} \
+        -H 'Content-Type: application/octet-stream' \
+        --data-binary '@apiproxy.zip')
+    - echo ${RESPONSE} | jq
+    - REVISION=$( echo ${RESPONSE} | jq --raw-output ".revision" )
+    - NAME=$CI_PROJECT_NAME
+    - MAJOR=$(echo $CI_PROJECT_NAME | cut -d "-v" -f2 )
+    - echo ${MAJOR}
+    - echo "REVISION=${REVISION}" >> variables.env 
+    - echo "EXTRA_DESCRIPTION=some message" >> variables.env  # Generate the EXTRA_DESCRIPTION and TAG environment variables
+    - echo "TAG=${MAJOR}.${REVISION}.0" >> variables.env 
+  artifacts:
+    reports:
+      dotenv: variables.env
+  only:
+    refs:
+      - main

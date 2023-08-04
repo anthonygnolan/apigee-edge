@@ -1,0 +1,52 @@
+openapi: 3.0.2
+
+# This is your document metadata.
+info:
+  version: 1.6.1
+  title: Apigee Emulator
+  description: |
+    API Reference for the Apigee Emulator
+
+
+# Servers where this API is hosted
+servers:
+  - url: http://127.0.0.1:8080/v1/emulator
+
+# Describe your paths here
+paths:
+  '/version':
+    get:
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: object
+                properties:
+                  releaseId:
+                    type: string
+                    example: "InvalidJSONFormat"
+                  activeEnvironment:
+                    type: string
+                    example: "JSON format is invalid"
+  '/test/developers':
+    get:
+      responses:
+        200:
+          description: j
+  '/test/products':
+    get:
+      responses:
+        200:
+          description: j 
+  '/test/developerapps':
+    get:
+      responses:
+        200:
+          description: j   
+  '/test/maps':
+    get:
+      responses:
+        200:
+          description: j

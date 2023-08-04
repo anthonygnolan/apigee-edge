@@ -1,0 +1,20 @@
+validate:
+  image: alpine
+  stage: validate
+  dependencies:
+    - build
+  before_script:
+    - apk update && apk add curl && apk add jq
+  script:
+    - |
+      RESPONSE=$(curl -X 'POST' ${APIGEE_URL}${APIGEE_ORG}'/apis?name='${CI_PROJECT_NAME}'&action=validate' \
+        -H 'Authorization: Basic '${APIGEE_TOKEN} \
+        -H 'Content-Type: application/octet-stream' \
+        --data-binary '@apiproxy.zip' )
+    - echo ${RESPONSE} | jq
+  artifacts:
+    paths:
+      - apiproxy.zip
+  except:
+    refs:
+      - tags

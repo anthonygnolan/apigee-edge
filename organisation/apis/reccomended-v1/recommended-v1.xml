@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="recommended-v1">
+    <DisplayName>recommended-v1</DisplayName>
+    <Description>This is a description example.</Description>
+</APIProxy>

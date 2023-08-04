@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JS-HelloWorld">
+    <DisplayName>JS-HelloWorld</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://hello-world.js</ResourceURL>
+</Javascript>

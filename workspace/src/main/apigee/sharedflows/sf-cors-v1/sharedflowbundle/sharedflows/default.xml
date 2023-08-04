@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+	<Step>
+		<Condition>response.header.Access-Control-Allow-Origin = null</Condition>
+		<Name>AM-CORSAllowOrigin</Name>
+	</Step>
+	<Step>
+		<Condition>response.header.Access-Control-Allow-Headers = null</Condition>
+		<Name>AM-CORSAllowHeaders</Name>
+	</Step>
+	<Step>
+		<Condition>response.header.Access-Control-Max-Age = null</Condition>
+		<Name>AM-CORSMaxAge</Name>
+	</Step>
+	<Step>
+		<Condition>response.header.Access-Control-Allow-Methods = null</Condition>
+		<Name>AM-CORSAllowMethods</Name>
+	</Step>
+</SharedFlow>

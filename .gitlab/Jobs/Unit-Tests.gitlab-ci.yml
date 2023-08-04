@@ -1,0 +1,4 @@
+unit_tests:
+  stage: test
+  script:
+    - echo "Running Unit Tests"
